@@ -1,16 +1,10 @@
 import { api } from '@/lib/axios'
 
 interface getOrderParams {
-  // status?:
-  //   | 'pending'
-  //   | 'canceled'
-  //   | 'processing'
-  //   | 'delivering'
-  //   | 'delivered'
-  //   | undefined
-  // orderId?: string | undefined
-  // customerName?: string | undefined
   pageIndex?: number
+  orderId?: string | null
+  customerName?: string | null
+  status?: string | null
 }
 
 interface getOrdersResponse {
@@ -28,10 +22,11 @@ interface getOrdersResponse {
   }
 }
 
-export async function getOrders({ pageIndex }: getOrderParams) {
+export async function getOrders(params: getOrderParams) {
   const response = await api.get('/orders', {
     params: {
-      pageIndex,
+      ...params,
+      status: params.status === 'all' ? null : params.status,
     },
   })
 
