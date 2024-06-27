@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useQuery } from '@tanstack/react-query'
 import { BarChart } from 'lucide-react'
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
@@ -5,16 +6,6 @@ import colors from 'tailwindcss/colors'
 
 import { getPopularProducts } from '@/api/get-popular-products'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-
-const data = [
-  { product: 'Pepperoni', amount: 12 },
-  { product: 'Margherita', amount: 65 },
-  { product: '4 Queijos', amount: 34 },
-  { product: 'Frango catupiri', amount: 34 },
-  { product: 'Peito de peru', amount: 15 },
-]
-
-// interface PopularProductsChartProps {}
 
 const COLORS = [
   colors.sky[500],
